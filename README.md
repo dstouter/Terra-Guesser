@@ -101,3 +101,4 @@ Recommended zoom levels:
 | Wrong guess | 0 pts, streak reset |
 
 Max score = rounds × 150 (all correct, all streak after round 1)
+# Terra-Guesser
