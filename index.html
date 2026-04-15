@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odd Tile Out</title>
+  <meta name="description" content="8 satellite tiles share a country. One doesn't. Find the impostor." />
+  <title>Terra Guesser</title>
   <link rel="stylesheet" href="src/style.css" />
 </head>
 <body>
@@ -13,25 +14,36 @@
     <!-- SCREEN: Start -->
     <div id="screen-start" class="screen active">
       <div class="start-inner">
-        <div class="logo">OTO</div>
-        <h1>Odd Tile Out</h1>
-        <p class="tagline">8 satellite tiles share a country. One doesn't. Find it.</p>
-        <button class="btn-primary" onclick="Game.start()">Play</button>
-        <p class="credit">Satellite imagery via OpenStreetMap tile servers</p>
+        <div class="logo">TG</div>
+        <h1>Terra Guesser</h1>
+        <p class="tagline">8 satellite tiles share a country.<br>One doesn't. Find the impostor.</p>
+        <div class="start-buttons">
+          <button class="btn-daily" onclick="Game.startDaily()">
+            <span class="daily-dot"></span>
+            Daily challenge
+          </button>
+          <button class="btn-practice" onclick="Game.start()">Practice mode</button>
+        </div>
+        <p class="credit">Satellite imagery via public map tiles</p>
       </div>
     </div>
 
     <!-- SCREEN: Game -->
     <div id="screen-game" class="screen">
       <header class="topbar">
-        <span class="game-label">Odd Tile Out</span>
+        <div class="topbar-left">
+          <span class="game-label">Terra Guesser</span>
+          <span class="daily-badge" id="dailyBadge" style="display:none">Daily</span>
+        </div>
         <div class="stats">
           <div class="stat-pill"><span id="scoreVal">0</span> pts</div>
           <div class="stat-pill">streak <span id="streakVal">0</span></div>
         </div>
       </header>
 
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
 
       <main class="game-main">
         <div class="round-header">
@@ -67,9 +79,13 @@
           <span class="score-num" id="endScore">0</span>
           <span class="score-lbl">pts</span>
         </div>
+        <span class="end-emoji" id="endEmoji"></span>
         <h2 id="endTitle"></h2>
         <p id="endSub"></p>
-        <button class="btn-primary" onclick="Game.restart()">Play again</button>
+        <div class="end-buttons">
+          <button class="btn-primary" id="shareBtn" onclick="Game.shareResult()" style="display:none">Share result</button>
+          <button class="btn-secondary" id="playAgainBtn" onclick="Game.restart()" style="display:none">Play again</button>
+        </div>
       </div>
     </div>
 
