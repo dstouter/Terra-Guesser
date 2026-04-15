@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odd Tile Out</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- SCREEN: Start -->
+    <div id="screen-start" class="screen active">
+      <div class="start-inner">
+        <div class="logo">OTO</div>
+        <h1>Odd Tile Out</h1>
+        <p class="tagline">8 satellite tiles share a country. One doesn't. Find it.</p>
+        <button class="btn-primary" onclick="Game.start()">Play</button>
+        <p class="credit">Satellite imagery via OpenStreetMap tile servers</p>
+      </div>
+    </div>
+
+    <!-- SCREEN: Game -->
+    <div id="screen-game" class="screen">
+      <header class="topbar">
+        <span class="game-label">Odd Tile Out</span>
+        <div class="stats">
+          <div class="stat-pill"><span id="scoreVal">0</span> pts</div>
+          <div class="stat-pill">streak <span id="streakVal">0</span></div>
+        </div>
+      </header>
+
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+      <main class="game-main">
+        <div class="round-header">
+          <span class="round-tag" id="roundTag">Round 1 of 6</span>
+          <p class="round-hint" id="roundHint"></p>
+        </div>
+
+        <div class="grid" id="grid"></div>
+
+        <div class="feedback-card" id="feedbackCard">
+          <div class="fb-top">
+            <div class="fb-icon" id="fbIcon"></div>
+            <div>
+              <div class="fb-title" id="fbTitle"></div>
+              <div class="fb-body" id="fbBody"></div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+          <div class="fb-learn" id="fbLearn"></div>
+        </div>
+
+        <div class="action-row">
+          <div class="combo-badge" id="comboBadge"></div>
+          <button class="btn-next" id="nextBtn" disabled onclick="Game.next()">Next round →</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- SCREEN: End -->
+    <div id="screen-end" class="screen">
+      <div class="end-inner">
+        <div class="score-ring">
+          <span class="score-num" id="endScore">0</span>
+          <span class="score-lbl">pts</span>
+        </div>
+        <h2 id="endTitle"></h2>
+        <p id="endSub"></p>
+        <button class="btn-primary" onclick="Game.restart()">Play again</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="src/data/rounds.js"></script>
+  <script src="src/game.js"></script>
+</body>
+</html>
